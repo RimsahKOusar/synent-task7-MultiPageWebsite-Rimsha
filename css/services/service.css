@@ -1,0 +1,142 @@
+/*
+╔═══════════════════════════════════════════════════════════════╗
+║  css/services/services.css  –  SERVICES PAGE STYLES          ║
+║                                                               ║
+║  What this file does:                                         ║
+║  All styles for the Services page:                           ║
+║    • Service cards (icon, title, feature list, link)         ║
+║    • Process timeline (numbered steps in a row)              ║
+║    • Pricing tier cards                                       ║
+║                                                               ║
+║  Corresponding HTML: pages/services.html                     ║
+╚═══════════════════════════════════════════════════════════════╝
+*/
+
+
+/* ══════════════════════════════════════════════════════════════
+   SERVICE CARDS GRID
+   ══════════════════════════════════════════════════════════════ */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+
+/* ── SERVICE CARD ─────────────────────────────────────────────────
+   The ::after pseudo-element draws an amber top bar that slides
+   in from the left on hover — indicates the card is interactive.
+   ──────────────────────────────────────────────────────────────── */
+.service-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition:
+    box-shadow   var(--duration-mid),
+    border-color var(--duration-mid),
+    transform    var(--duration-mid) var(--ease-out);
+}
+
+/* Top accent line — starts collapsed (scaleX:0) */
+.service-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--border-focus));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-mid) var(--ease-out);
+}
+
+.service-card:hover {
+  box-shadow: var(--shadow-hover);
+  border-color: var(--border-focus);
+  transform: translateY(-5px);
+}
+
+.service-card:hover::after {
+  transform: scaleX(1);   /* slides in from left */
+}
+
+
+/* ── SERVICE ICON ─────────────────────────────────────────────────  */
+.service-icon {
+  width: 56px; height: 56px;
+  border-radius: var(--radius-md);
+  background: var(--accent-light);
+  border: 1px solid rgba(184,134,42,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.9rem;
+}
+
+
+/* ── CARD TEXT ────────────────────────────────────────────────────  */
+.service-card h3 {
+  font-family: var(--font-body);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-heading);
+}
+
+.service-card > p {
+  font-size: 1.4rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  flex-grow: 1;   /* pushes feature list to the bottom */
+  max-width: none;
+}
+
+
+/* ── FEATURE LIST ─────────────────────────────────────────────────
+   Uses ::before on each <li> to draw a custom amber check mark.
+   ──────────────────────────────────────────────────────────────── */
+.service-features {
+  border-top: 1px solid var(--border);
+  padding-top: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.service-features li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: 1.35rem;
+  color: var(--text-muted);
+}
+
+/* Custom check mark using ::before */
+.service-features li::before {
+  content: '✓';
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* "Learn more →" text link at the bottom of each card */
+.service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--accent);
+  transition: gap var(--duration-fast), color var(--duration-fast);
+}
+
+.service-link:hover {
+  color: var(--accent-hover);
+  gap: var(--space-md);   /* arrow slides right on hover */
+}
