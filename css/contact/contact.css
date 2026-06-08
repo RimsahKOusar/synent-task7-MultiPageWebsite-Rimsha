@@ -1,0 +1,305 @@
+/*
+╔═══════════════════════════════════════════════════════════════╗
+║  css/contact/contact.css  –  CONTACT PAGE STYLES             ║
+║                                                               ║
+║  What this file does:                                         ║
+║  All styles for the Contact page:                            ║
+║    • Two-column layout (info panel left, form right)          ║
+║    • Contact detail cards (address, email, phone)            ║
+║    • Form inputs, textarea, and submit button                 ║
+║    • Validation states (.error, .success) on inputs          ║
+║    • Success message shown after form submission             ║
+║                                                               ║
+║  Corresponding HTML: pages/contact.html                      ║
+║  Corresponding JS:   js/contact/form.js                      ║
+╚═══════════════════════════════════════════════════════════════╝
+*/
+
+
+/* ══════════════════════════════════════════════════════════════
+   TWO-COLUMN LAYOUT
+   Left column (1fr) = contact info.
+   Right column (1.6fr) = contact form (gets more space).
+   ══════════════════════════════════════════════════════════════ */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: var(--space-2xl);
+  align-items: start;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   INFO PANEL  –  left column
+   ══════════════════════════════════════════════════════════════ */
+
+.contact-info h2 {
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  margin-bottom: var(--space-md);
+}
+
+.contact-info > p {
+  font-size: 1.6rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: var(--space-xl);
+  max-width: none;
+}
+
+
+/* ── DETAIL CARDS ─────────────────────────────────────────────────
+   Each card holds one contact item: icon + label + value.
+   ──────────────────────────────────────────────────────────────── */
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.detail-card {
+  display: flex;
+  gap: var(--space-md);
+  align-items: flex-start;
+  padding: var(--space-lg);
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--duration-fast);
+}
+
+.detail-card:hover {
+  border-color: var(--border-focus);
+}
+
+.detail-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.detail-label {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.detail-value {
+  font-size: 1.5rem;
+  color: var(--text-body);
+  font-weight: 500;
+}
+
+
+/* ── CONTACT PAGE SOCIAL ROW ──────────────────────────────────────  */
+.contact-socials {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.contact-social-btn {
+  width: 38px; height: 38px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg-panel);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: var(--text-muted);
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--duration-fast), color var(--duration-fast);
+}
+
+.contact-social-btn:hover {
+  border-color: var(--border-focus);
+  color: var(--accent);
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   CONTACT FORM  –  right column
+   ══════════════════════════════════════════════════════════════ */
+
+.form-wrap {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl);
+  box-shadow: var(--shadow-card);
+}
+
+.form-wrap h3 {
+  font-family: var(--font-body);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin-bottom: var(--space-xl);
+}
+
+
+/* ── FORM ROW ─────────────────────────────────────────────────────
+   Side-by-side pair of inputs (First Name / Last Name).
+   Collapses to single column on mobile.
+   ──────────────────────────────────────────────────────────────── */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+
+/* ── FORM GROUP ───────────────────────────────────────────────────
+   Wraps a label + its input/textarea. gap spaces them vertically.
+   ──────────────────────────────────────────────────────────────── */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-lg);
+}
+
+.form-group label {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-body);
+}
+
+/* Red asterisk for required fields */
+.form-group label .req {
+  color: #c0392b;
+  margin-left: 2px;
+}
+
+
+/* ── INPUTS & TEXTAREA ────────────────────────────────────────────
+   Shared styles for both <input> and <textarea>.
+   ──────────────────────────────────────────────────────────────── */
+.form-input,
+.form-textarea,
+.form-select {
+  width: 100%;
+  background: var(--bg-page);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-body);
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  padding: var(--space-sm) var(--space-md);
+  outline: none;
+  transition:
+    border-color var(--duration-fast),
+    box-shadow   var(--duration-fast),
+    background   var(--duration-fast);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--text-hint);
+}
+
+/* Focus: amber ring appears */
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(200,169,110,0.2);
+  background: var(--bg-panel);
+}
+
+/* Textarea specific */
+.form-textarea {
+  resize: vertical;
+  min-height: 130px;
+  max-height: 400px;
+  line-height: 1.6;
+}
+
+
+/* ── VALIDATION STATES ────────────────────────────────────────────
+   .error and .success are toggled by js/contact/form.js.
+   ──────────────────────────────────────────────────────────────── */
+.form-input.error,
+.form-textarea.error {
+  border-color: #c0392b;
+  box-shadow: 0 0 0 3px rgba(192,57,43,0.12);
+}
+
+.form-input.success,
+.form-textarea.success {
+  border-color: #27ae60;
+  box-shadow: 0 0 0 3px rgba(39,174,96,0.1);
+}
+
+/* Error message text below the input — hidden until .visible */
+.field-error {
+  font-size: 1.25rem;
+  color: #c0392b;
+  display: none;
+}
+
+.field-error.visible {
+  display: block;
+}
+
+
+/* ── SUBMIT BUTTON ────────────────────────────────────────────────  */
+.form-submit {
+  width: 100%;
+  margin-top: var(--space-sm);
+  padding: var(--space-md);
+  font-size: 1.6rem;
+}
+
+.form-submit.loading {
+  opacity: 0.65;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+
+/* ── SUCCESS MESSAGE ──────────────────────────────────────────────
+   Replaces the form after a successful submission.
+   Hidden by default; JS removes .hidden to show it.
+   ──────────────────────────────────────────────────────────────── */
+.form-success {
+  text-align: center;
+  padding: var(--space-2xl) var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.form-success-icon { font-size: 3.5rem; }
+
+.form-success h3 {
+  font-family: var(--font-body);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-heading);
+}
+
+.form-success p {
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  max-width: 40ch;
+  margin-inline: auto;
+}
+
+
+/* ── RESPONSIVE ───────────────────────────────────────────────────  */
+@media (max-width: 900px) {
+  .contact-layout { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .form-row { grid-template-columns: 1fr; }
+  .form-wrap { padding: var(--space-lg); }
+}

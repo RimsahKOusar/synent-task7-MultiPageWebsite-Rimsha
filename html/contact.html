@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="../css/shared/nav.css" />
   <link rel="stylesheet" href="../css/shared/footer.css" />
   <link rel="stylesheet" href="../css/shared/components.css" />
- <!-- <link rel="stylesheet" href="../css/contact/contact.css" />   Contact-specific only -->
+  <link rel="stylesheet" href="../css/contact/contact.css" />   <!--Contact-specific only -->
 </head>
 
 <body>
@@ -74,8 +74,188 @@
     </div>
   </section>
 
-  
+  <!--
+  ╔═════════════════════════════════════════════════════════════╗
+  ║  MODULE 3 — CONTACT LAYOUT                                 ║
+  ║  Two columns: info panel (left) + form (right).            ║
+  ║  CSS: css/contact/contact.css                              ║
+  ║  JS:  js/contact/form.js  (validation + submit)            ║
+  ╚═════════════════════════════════════════════════════════════╝
+  -->
+  <section class="section" aria-label="Contact information and form">
+    <div class="container">
+      <div class="contact-layout">
 
+
+        <!-- ── LEFT: INFO PANEL ────────────────────────────────────── -->
+        <div class="contact-info reveal">
+
+          <h2>We'd love to hear from you</h2>
+          <p>Whether you have a clear brief or just a vague idea — start here. We'll help you shape it into something real.</p>
+
+          <!-- Three contact detail cards -->
+          <div class="contact-details">
+
+            <div class="detail-card">
+              <span class="detail-icon" aria-hidden="true">📍</span>
+              <div>
+                <span class="detail-label">Location</span>
+                <span class="detail-value">Remote-first · Available Worldwide</span>
+              </div>
+            </div>
+
+            <div class="detail-card">
+              <span class="detail-icon" aria-hidden="true">✉️</span>
+              <div>
+                <span class="detail-label">Email</span>
+                <a class="detail-value" href="mailto:hello@luminary.studio">
+                  hello@luminary.studio
+                </a>
+              </div>
+            </div>
+
+            <div class="detail-card">
+              <span class="detail-icon" aria-hidden="true">🕐</span>
+              <div>
+                <span class="detail-label">Response time</span>
+                <span class="detail-value">Within 48 hours, guaranteed</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Social links row -->
+          <div class="contact-socials" aria-label="Social media links">
+            <a class="contact-social-btn" href="#" aria-label="Twitter">𝕏</a>
+            <a class="contact-social-btn" href="#" aria-label="LinkedIn">in</a>
+            <a class="contact-social-btn" href="#" aria-label="Dribbble">◉</a>
+            <a class="contact-social-btn" href="#" aria-label="GitHub">⌥</a>
+          </div>
+
+        </div>
+
+
+        <!-- ── RIGHT: CONTACT FORM ─────────────────────────────────── -->
+        <div class="reveal">
+          <div class="form-wrap">
+            <h3>Send a message</h3>
+
+            <!--
+              id="contactForm" → JS reads this to attach submit handler.
+              novalidate      → disables browser's built-in validation
+                                 so our custom JS validation runs instead.
+            -->
+            <form id="contactForm" novalidate>
+
+              <!-- First Name + Last Name side by side -->
+              <div class="form-row">
+
+                <div class="form-group">
+                  <label for="firstName">
+                    First name <span class="req" aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="firstName"
+                    placeholder="Rimsha"
+                    autocomplete="given-name"
+                  />
+                  <!-- Error span: id = fieldId + "Error" (convention used by form.js) -->
+                  <span class="field-error" id="firstNameError" role="alert"></span>
+                </div>
+
+                <div class="form-group">
+                  <label for="lastName">
+                    Last name <span class="req" aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="lastName"
+                    placeholder="Kousar"
+                    autocomplete="family-name"
+                  />
+                  <span class="field-error" id="lastNameError" role="alert"></span>
+                </div>
+
+              </div>
+
+              <!-- Email -->
+              <div class="form-group">
+                <label for="email">
+                  Email address <span class="req" aria-hidden="true">*</span>
+                </label>
+                <input
+                  class="form-input"
+                  type="email"
+                  id="email"
+                  placeholder="alex@company.com"
+                  autocomplete="email"
+                />
+                <span class="field-error" id="emailError" role="alert"></span>
+              </div>
+
+              <!-- Subject -->
+              <div class="form-group">
+                <label for="subject">
+                  Subject <span class="req" aria-hidden="true">*</span>
+                </label>
+                <input
+                  class="form-input"
+                  type="text"
+                  id="subject"
+                  placeholder="New website for my startup…"
+                />
+                <span class="field-error" id="subjectError" role="alert"></span>
+              </div>
+
+              <!-- Message -->
+              <div class="form-group">
+                <label for="message">
+                  Message <span class="req" aria-hidden="true">*</span>
+                </label>
+                <textarea
+                  class="form-textarea"
+                  id="message"
+                  placeholder="Tell us about your project — what you're building, your timeline, and your budget range…"
+                ></textarea>
+                <span class="field-error" id="messageError" role="alert"></span>
+              </div>
+
+              <!-- Submit button
+                   id="submitBtn" → form.js changes its text and adds .loading -->
+              <button class="btn btn-primary form-submit" type="submit" id="submitBtn">
+                Send message →
+              </button>
+
+            </form>
+
+            <!--
+              Success message — hidden until form is submitted successfully.
+              form.js hides the <form> and removes .hidden from this element.
+            -->
+            <div class="form-success hidden" id="formSuccess" role="status">
+              <div class="form-success-icon" aria-hidden="true">✓</div>
+              <h3>Message sent!</h3>
+              <p>
+                Thanks for reaching out. We'll be back in touch within
+                48 hours with a clear next step.
+              </p>
+              <a class="btn btn-outline" href="../index.html">← Back to home</a>
+            </div>
+
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+
+  
+  
   <script src="../js/nav.js"></script>
   <script src="../js/transitions.js"></script>
 
