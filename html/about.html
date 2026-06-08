@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="../css/shared/components.css" />
   <link rel="stylesheet" href="../css/about/Story.css" />
   <link rel="stylesheet" href="../css/about/values.css" />
+  <link rel="stylesheet" href="../css/about/team.css" />
  
 </head>
 
@@ -136,7 +137,7 @@
   ╔═════════════════════════════════════════════════════════════╗
   ║  MODULE 4 — VALUES                                         ║
   ║  Four core values in a 2×2 grid.                           ║
-  ║  CSS: css/about/about.css → .values-*                      ║
+  ║  CSS: css/about/values.css → .values-*                      ║
   ╚═════════════════════════════════════════════════════════════╝
   -->
   <section
@@ -189,9 +190,52 @@
     </div>
   </section>
 
+  <!--
+  ╔═════════════════════════════════════════════════════════════╗
+  ║  MODULE 5 — TEAM                                           ║
+  ║  Three team member cards.                                  ║
+  ║  CSS: css/about/about.css → .team-*                        ║
+  ╚═════════════════════════════════════════════════════════════╝
+  -->
+  <section class="section" aria-labelledby="teamHeading">
+    <div class="container">
+
+      <div class="section-header centered reveal">
+        <span class="eyebrow">The people</span>
+        <h2 id="teamHeading">Who you'll work with</h2>
+        <p>A small team with big ambitions. You always talk to the people doing the work.</p>
+      </div>
+
+      <div class="team-grid">
+
+        <article class="team-card reveal">
+          <div class="team-avatar" aria-hidden="true">A</div>
+          <h3>Alex Mercer</h3>
+          <span class="team-role">Founder & Creative Director</span>
+          <p class="team-bio">10 years crafting brand identities. Obsessed with typography and negative space.</p>
+        </article>
+
+        <article class="team-card reveal">
+          <div class="team-avatar" aria-hidden="true">S</div>
+          <h3>Sofia Reyes</h3>
+          <span class="team-role">Lead Engineer</span>
+          <p class="team-bio">Former fintech engineer. Loves performance optimisation and clean architecture.</p>
+        </article>
+
+        <article class="team-card reveal">
+          <div class="team-avatar" aria-hidden="true">J</div>
+          <h3>Jordan Kim</h3>
+          <span class="team-role">Strategy & Growth</span>
+          <p class="team-bio">5 years in product management. Translates business goals into digital strategies.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
 
 
-    <script src="../js\nav.js"></script>
+
+    <script src="../js/nav.js"></script>
 
 
 </body>
