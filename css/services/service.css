@@ -140,3 +140,11 @@
   color: var(--accent-hover);
   gap: var(--space-md);   /* arrow slides right on hover */
 }
+
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }  /* 3 cols → 2 cols */
+}
+
+@media (max-width: 768px) {
+  .services-grid { grid-template-columns: 1fr; }           /* 2 cols → 1 col */
+}

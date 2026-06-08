@@ -103,3 +103,7 @@
   color: var(--text-hint);
 }
 
+@media (max-width: 768px) {
+  .pricing-grid { grid-template-columns: 1fr; }            /* 3 cols → 1 col */
+  .pricing-card.featured { transform: none; }             /* Remove scale effect */
+}

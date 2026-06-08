@@ -67,3 +67,8 @@
   max-width: 22ch;
   margin-inline: auto;
 }
+
+@media (max-width: 1024px) {
+  .process-timeline { grid-template-columns: repeat(2, 1fr); }
+  .process-timeline::before { display: none; }             /* Hide connecting line */
+}
