@@ -264,6 +264,91 @@
     </div>
   </section>
 
+   <!--
+  ╔═════════════════════════════════════════════════════════════╗
+  ║  MODULE 5 — FOOTER                                         ║
+  ║  Identical markup on every page.                           ║
+  ║  CSS: css/shared/footer.css                                ║
+  ╚═════════════════════════════════════════════════════════════╝
+  -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <!-- Brand column -->
+        <div>
+          <div class="footer-brand-name">
+            <span class="footer-brand-dot" aria-hidden="true"></span>
+            Luminary
+          </div>
+          <p class="footer-tagline">
+            A boutique digital studio crafting exceptional web
+            experiences and brand identities.
+          </p>
+          <div class="footer-socials" aria-label="Social media links">
+            <a class="social-btn" href="#" aria-label="Twitter">𝕏</a>
+            <a class="social-btn" href="#" aria-label="LinkedIn">in</a>
+            <a class="social-btn" href="#" aria-label="Dribbble">◉</a>
+            <a class="social-btn" href="#" aria-label="GitHub">⌥</a>
+          </div>
+        </div>
+
+        <!-- Link column: Pages -->
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pages/about.html">About</a></li>
+            <li><a href="pages/services.html">Services</a></li>
+            <li><a href="pages/contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Link column: Services -->
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="pages/services.html">Web Design</a></li>
+            <li><a href="pages/services.html">Development</a></li>
+            <li><a href="pages/services.html">Brand Identity</a></li>
+            <li><a href="pages/services.html">Strategy</a></li>
+          </ul>
+        </div>
+
+        <!-- Link column: Contact -->
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:hello@luminary.studio">hello@luminary.studio</a></li>
+            <li><a href="tel:+10000000000">+1 (000) 000-0000</a></li>
+            <li><a href="pages/contact.html">Send a message</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom copyright bar -->
+      <div class="footer-bottom">
+        <p>© 2025 Luminary Studio. All rights reserved.</p>
+        <p>Designed with intention. Built with craft.</p>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ── JAVASCRIPT ──────────────────────────────────────────────────
+       Scripts are at the end of <body> so all HTML elements
+       they reference already exist when they run.
+
+       Load order:
+       1. transitions.js — page overlay + scroll reveal (no deps)
+       2. nav.js         — uses .navbar elements from above
+       3. counters.js    — uses [data-count] elements from above
+                           (home page only)
+  ──────────────────────────────────────────────────────────────── -->
+
 
   <script src="../js/nav.js"></script>
   <script src="../js/transitions.js"></script>
