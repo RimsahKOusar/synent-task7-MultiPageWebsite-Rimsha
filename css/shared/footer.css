@@ -1,0 +1,163 @@
+/*
+╔═══════════════════════════════════════════════════════════════╗
+║  css/shared/footer.css  –  SITE FOOTER                       ║
+║                                                               ║
+║  What this file does:                                         ║
+║  Styles the footer present on every page:                    ║
+║    • Brand column (logo + tagline + social icons)            ║
+║    • Three link columns (Pages, Services, Contact)           ║
+║    • Bottom bar (copyright line)                             ║
+╚═══════════════════════════════════════════════════════════════╝
+*/
+
+
+/* ══════════════════════════════════════════════════════════════
+   FOOTER WRAPPER
+   border-top gives a clean dividing line above the footer.
+   ══════════════════════════════════════════════════════════════ */
+.site-footer {
+  background: var(--text-heading);  /* deep ink background */
+  color: #f7f3ec;
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-lg);
+  border-top: 1px solid var(--border);
+}
+
+
+/* ── FOOTER GRID ──────────────────────────────────────────────────
+   4 columns: brand (wider) + three link groups.
+   The brand column gets 2fr so it has room for the tagline.
+   ──────────────────────────────────────────────────────────────── */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--space-2xl);
+  margin-bottom: var(--space-2xl);
+}
+
+
+/* ── BRAND COLUMN ─────────────────────────────────────────────────
+   Logo name, short tagline, and social icon row.
+   ──────────────────────────────────────────────────────────────── */
+.footer-brand-name {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #f7f3ec;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+}
+
+.footer-brand-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.footer-tagline {
+  font-size: 1.4rem;
+  color: #7a6f60;
+  line-height: 1.6;
+  max-width: 30ch;
+  margin-bottom: var(--space-lg);
+}
+
+
+/* ── SOCIAL ICONS ─────────────────────────────────────────────────
+   Small square icon buttons. Each one shows an emoji-style icon.
+   ──────────────────────────────────────────────────────────────── */
+.footer-socials {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.social-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  border: 1px solid #2e2a24;
+  background: #2e2a24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: #7a6f60;
+  transition: border-color var(--duration-fast), color var(--duration-fast);
+}
+
+.social-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+
+/* ── LINK COLUMNS ─────────────────────────────────────────────────
+   Three groups of links: Pages, Services, Contact.
+   ──────────────────────────────────────────────────────────────── */
+.footer-col h4 {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #f7f3ec;
+  margin-bottom: var(--space-md);
+}
+
+.footer-col ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.footer-col a {
+  font-size: 1.4rem;
+  color: #7a6f60;
+  transition: color var(--duration-fast);
+}
+
+.footer-col a:hover {
+  color: var(--accent);
+}
+
+
+/* ── BOTTOM BAR ───────────────────────────────────────────────────
+   Copyright line at the very bottom.
+   border-top separates it from the columns above.
+   ──────────────────────────────────────────────────────────────── */
+.footer-bottom {
+  border-top: 1px solid #2e2a24;
+  padding-top: var(--space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.footer-bottom p {
+  font-size: 1.25rem;
+  color: #5a5248;
+  max-width: none;
+}
+
+
+/* ── RESPONSIVE ───────────────────────────────────────────────────  */
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Brand column spans both columns */
+  .footer-grid > div:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; }
+}
