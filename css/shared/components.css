@@ -129,3 +129,43 @@
   font-size: 1.6rem;
   padding: var(--space-md) var(--space-xl);
 }
+
+/* ══════════════════════════════════════════════════════════════
+   BADGE / TAG
+   Small pill label used to categorise content.
+   ══════════════════════════════════════════════════════════════ */
+.badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-light);
+  border: 1px solid rgba(184,134,42,0.25);
+  border-radius: var(--radius-full);
+  padding: 2px var(--space-sm);
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   BASE CARD
+   ══════════════════════════════════════════════════════════════ */
+.card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-card);
+  transition:
+    box-shadow   var(--duration-mid),
+    border-color var(--duration-mid),
+    transform    var(--duration-mid) var(--ease-out);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-hover);
+  border-color: var(--border-focus);
+  transform: translateY(-4px);
+}
