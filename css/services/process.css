@@ -1,0 +1,69 @@
+/* ══════════════════════════════════════════════════════════════
+   PROCESS TIMELINE  –  horizontal numbered steps
+   ══════════════════════════════════════════════════════════════ */
+
+.process-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+  position: relative;
+  padding-top: var(--space-xl);
+}
+
+/* Horizontal connecting line running behind all step circles */
+.process-timeline::before {
+  content: '';
+  position: absolute;
+  top: calc(var(--space-xl) + 23px);   /* vertically centred on circles */
+  left: 12%; right: 12%;
+  height: 1px;
+  background: linear-gradient(to right, var(--accent), var(--border), var(--accent));
+}
+
+.process-step {
+  text-align: center;
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+/* Numbered circle sits above the connecting line */
+.step-circle {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  background: var(--bg-panel);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--accent);
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  transition: background var(--duration-mid), color var(--duration-mid);
+}
+
+.process-step:hover .step-circle {
+  background: var(--accent);
+  color: #fff;
+}
+
+.process-step h3 {
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-heading);
+}
+
+.process-step p {
+  font-size: 1.3rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 22ch;
+  margin-inline: auto;
+}
