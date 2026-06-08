@@ -1,0 +1,231 @@
+/*
+╔═══════════════════════════════════════════════════════════════╗
+║  css/shared/nav.css  –  NAVIGATION BAR                       ║
+║                                                               ║
+║  What this file does:                                         ║
+║  Styles the top navigation bar shared across EVERY page:     ║
+║    • Logo (left side)                                         ║
+║    • Nav links + CTA button (right side)                      ║
+║    • Glass-blur effect when user scrolls down                 ║
+║    • Mobile hamburger menu                                    ║
+║                                                               ║
+║  Corresponding JS:   js/shared/nav.js                        ║
+║  Included in:        every HTML <body>                        ║
+╚═══════════════════════════════════════════════════════════════╝
+*/
+
+
+/* ══════════════════════════════════════════════════════════════
+   NAVBAR WRAPPER
+   position: fixed keeps it stuck to top while user scrolls.
+   z-index: 1000 keeps it above ALL page content.
+   ══════════════════════════════════════════════════════════════ */
+.navbar {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: var(--nav-height);   /* 72px — pages offset their top padding by this */
+  z-index: 1000;
+
+  /* Starts transparent so hero images can bleed through the top */
+  background: transparent;
+  border-bottom: 1px solid transparent;
+
+  /* Smooth visual change when .scrolled is added by JS */
+  transition:
+    background     var(--duration-slow) var(--ease-out),
+    border-color   var(--duration-slow) var(--ease-out),
+    backdrop-filter var(--duration-slow) var(--ease-out);
+}
+
+
+/* ── SCROLLED STATE ───────────────────────────────────────────────
+   When the user scrolls > 60px, nav.js adds .scrolled to .navbar.
+   backdrop-filter: blur() creates a frosted-glass look by
+   blurring whatever content is behind the navbar element.
+   ──────────────────────────────────────────────────────────────── */
+.navbar.scrolled {
+  background: rgba(247, 243, 236, 0.88);
+  border-bottom-color: var(--border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);   /* Safari prefix required */
+  box-shadow: var(--shadow-nav);
+}
+
+
+/* ── NAV INNER LAYOUT ─────────────────────────────────────────────
+   flex-between: logo left, links + CTA right, all centred vertically.
+   ──────────────────────────────────────────────────────────────── */
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  max-width: var(--container-wide);
+  margin-inline: auto;
+  padding-inline: var(--space-lg);
+}
+
+
+/* ── LOGO ─────────────────────────────────────────────────────────
+   The brand mark. Uses the display serif for editorial character.
+   The small animated dot is the logo mark.
+   ──────────────────────────────────────────────────────────────── */
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-heading);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+/* Animated amber dot — the logo mark */
+.nav-logo-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: dot-pulse 3s ease-in-out infinite;
+}
+
+@keyframes dot-pulse {
+  0%, 100% { transform: scale(1);    opacity: 1;   }
+  50%       { transform: scale(1.35); opacity: 0.6; }
+}
+
+
+/* ── DESKTOP NAV LINKS ────────────────────────────────────────────
+   Row of page links. Each link has a sliding underline on hover.
+   ──────────────────────────────────────────────────────────────── */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+.nav-link {
+  font-size: 1.45rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  position: relative;   /* needed for the underline pseudo-element */
+  transition: color var(--duration-mid);
+}
+
+/* Underline that slides in from the left on hover */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;          /* starts collapsed */
+  height: 2px;
+  background: var(--accent);
+  border-radius: var(--radius-full);
+  transition: width var(--duration-mid) var(--ease-out);
+}
+
+.nav-link:hover       { color: var(--text-heading); }
+.nav-link.active      { color: var(--text-heading); }
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;       /* expands on hover / active page */
+}
+
+
+/* ── CTA BUTTON ───────────────────────────────────────────────────
+   "Get In Touch" — filled amber pill at the far right.
+   ──────────────────────────────────────────────────────────────── */
+.nav-cta {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent);
+  border-radius: var(--radius-full);
+  padding: var(--space-sm) var(--space-lg);
+  transition:
+    background  var(--duration-mid),
+    transform   var(--duration-fast);
+}
+
+.nav-cta:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+
+/* ── HAMBURGER (mobile only) ──────────────────────────────────────
+   Three bars that animate into an ✕ when menu opens.
+   Hidden on desktop (display:none) — shown via @media below.
+   ──────────────────────────────────────────────────────────────── */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: var(--space-sm);
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text-heading);
+  border-radius: var(--radius-full);
+  transition:
+    transform var(--duration-mid) var(--ease-out),
+    opacity   var(--duration-mid);
+}
+
+/* .open is added by nav.js when hamburger is clicked */
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg);  }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+
+/* ── MOBILE MENU PANEL ────────────────────────────────────────────
+   Drops down below the navbar when hamburger is pressed.
+   Hidden by default; .open makes it display:flex.
+   ──────────────────────────────────────────────────────────────── */
+.nav-mobile-panel {
+  display: none;
+  flex-direction: column;
+  gap: var(--space-xs);
+  background: rgba(247, 243, 236, 0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: var(--space-md) var(--space-lg) var(--space-lg);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-mobile-panel.open {
+  display: flex;
+}
+
+.nav-mobile-link {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--border);
+  transition: color var(--duration-fast);
+}
+
+.nav-mobile-link:last-child { border-bottom: none; }
+
+.nav-mobile-link:hover,
+.nav-mobile-link.active {
+  color: var(--accent);
+}
+
+
+/* ── RESPONSIVE ───────────────────────────────────────────────────
+   Below 768px: hide desktop links, show hamburger button.
+   ──────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .nav-links,
+  .nav-cta     { display: none; }   /* hide desktop nav   */
+  .nav-toggle  { display: flex; }   /* show hamburger     */
+}
