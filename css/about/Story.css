@@ -1,0 +1,93 @@
+/* ══════════════════════════════════════════════════════════════
+   STORY SECTION  –  text + process cards side-by-side
+   ══════════════════════════════════════════════════════════════ */
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+
+.story-text h2 {
+  margin-bottom: var(--space-lg);
+}
+
+.story-text p {
+  margin-bottom: var(--space-md);
+  font-size: 1.55rem;
+  color: var(--text-muted);
+}
+
+.story-text p:last-of-type {
+  margin-bottom: var(--space-xl);
+}
+
+
+/* ── PROCESS CARDS VISUAL ─────────────────────────────────────────
+   Three cards stacked with slight rotation and offset — gives
+   a "scattered on a desk" look.
+   Each card is position:absolute inside a fixed-height container.
+   ──────────────────────────────────────────────────────────────── */
+.story-visual {
+  position: relative;
+  height: 400px;
+}
+
+.process-card {
+  position: absolute;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  width: 280px;
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--duration-mid), box-shadow var(--duration-mid);
+}
+
+.process-card:hover {
+  border-color: var(--border-focus);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Each card at a different position and small rotation angle */
+.process-card:nth-child(1) { top:   0; left:   0; transform: rotate(-2deg); }
+.process-card:nth-child(2) { top:  70px; left:  50px; transform: rotate(1.5deg); z-index: 1; }
+.process-card:nth-child(3) { top: 140px; left: 100px; transform: rotate(-1deg);  z-index: 2; }
+
+.process-card-num {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: var(--space-sm);
+}
+
+.process-card h4 {
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin-bottom: var(--space-xs);
+}
+
+.process-card p {
+  font-size: 1.3rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  max-width: none;
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────────────  */
+@media (max-width: 768px) {
+  .story-grid  { grid-template-columns: 1fr; }
+
+  .story-visual {
+    height: 300px;
+    margin-top: var(--space-xl);
+  }
+
+  .process-card { width: 220px; }
+  .process-card:nth-child(2) { left: 30px; }
+  .process-card:nth-child(3) { left: 60px; }
+}

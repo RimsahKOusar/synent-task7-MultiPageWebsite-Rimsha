@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="../css/base/layout.css" />
   <link rel="stylesheet" href="../css/shared/nav.css" />
   <link rel="stylesheet" href="../css/shared/components.css" />
+    <link rel="stylesheet" href="../css/about/Story.css" />
  
 </head>
 
@@ -80,6 +81,61 @@
       </p>
     </div>
   </section>
+
+   <!--
+  ╔═════════════════════════════════════════════════════════════╗
+  ║  MODULE 3 — STORY SECTION                                  ║
+  ║  Text on the left, overlapping process cards on the right. ║
+  ║  CSS: css/about/about.css → .story-*                       ║
+  ╚═════════════════════════════════════════════════════════════╝
+  -->
+  <section class="section" aria-labelledby="storyHeading">
+    <div class="container">
+      <div class="story-grid">
+
+        <!-- Left: copy + link -->
+        <div class="story-text reveal">
+          <span class="eyebrow">How we work</span>
+          <h2 id="storyHeading">A process built around your success</h2>
+          <p>
+            Every engagement starts with a deep discovery phase where we
+            learn your business, your users, and your competitive landscape.
+          </p>
+          <p>
+            From there we move through design exploration, iterative
+            feedback cycles, and a development phase with weekly check-ins
+            so you're never in the dark.
+          </p>
+          <a class="btn btn-outline" href="services.html">See our services →</a>
+        </div>
+
+        <!-- Right: stacked rotated process cards (decorative) -->
+        <div class="story-visual reveal" aria-hidden="true">
+          <div class="process-card">
+            <div class="process-card-num">01 — DISCOVER</div>
+            <h4>Research & Strategy</h4>
+            <p>Understanding goals, users, and market before anything else.</p>
+          </div>
+          <div class="process-card">
+            <div class="process-card-num">02 — DESIGN</div>
+            <h4>Visual Exploration</h4>
+            <p>Wireframes, prototypes, and design systems that feel right.</p>
+          </div>
+          <div class="process-card">
+            <div class="process-card-num">03 — BUILD</div>
+            <h4>Ship & Iterate</h4>
+            <p>Clean code, regular releases, fast response to feedback.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+
+
+    <script src="../js\nav.js"></script>
 
 
 </body>
