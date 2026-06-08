@@ -1,0 +1,98 @@
+/*
+╔═══════════════════════════════════════════════════════════════╗
+║  css/base/typography.css  –  TEXT STYLES                     ║
+║                                                               ║
+║  What this file does:                                         ║
+║  Defines every text treatment used across the entire site:   ║
+║  headings, body text, labels, captions, and utility classes. ║
+║                                                               ║
+║  Pattern:                                                     ║
+║  1. Element selectors (h1, p) set sensible defaults.         ║
+║  2. Utility classes (.label, .muted) let any element         ║
+║     override those defaults without writing new CSS.         ║
+╚═══════════════════════════════════════════════════════════════╝
+*/
+
+
+/* ── HEADINGS ────────────────────────────────────────────────────
+   All headings use the display serif font.
+   letter-spacing: -0.02em tightens headline kerning (looks better
+   at large sizes).  line-height: 1.15 is tighter than body text.
+   ──────────────────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text-heading);
+}
+
+h1 { font-size: clamp(3.2rem, 6vw, 5.6rem); }
+/*   clamp(min, preferred, max):
+     — at least 3.2rem on tiny screens
+     — scales with viewport width (6vw)
+     — never larger than 5.6rem
+     Result: fluid type that looks right on any screen width.    */
+
+h2 { font-size: clamp(2.4rem, 4vw, 3.8rem); }
+h3 { font-size: clamp(1.8rem, 3vw, 2.6rem); }
+h4 { font-size: 1.8rem; }
+h5 { font-size: 1.5rem; }
+h6 { font-size: 1.3rem; }
+
+
+/* ── BODY TEXT ────────────────────────────────────────────────────
+   Paragraphs use the body font (set on <body> in reset.css).
+   max-width 65ch limits line length to ~65 characters — the
+   optimal reading width for long-form text.
+   ──────────────────────────────────────────────────────────────── */
+p {
+  font-size: 1.6rem;
+  color: var(--text-body);
+  line-height: 1.75;
+  max-width: 65ch;   /* ch unit = width of the '0' character */
+}
+
+
+/* ── UTILITY CLASSES ──────────────────────────────────────────────
+   Add these to any HTML element to override its default styling.
+
+   Example:
+     <p class="muted text-sm">Posted 3 days ago</p>
+   ──────────────────────────────────────────────────────────────── */
+
+/* Text colour overrides */
+.muted   { color: var(--text-muted); }
+.hint    { color: var(--text-hint); font-style: italic; }
+.accent  { color: var(--accent); }
+
+/* Size overrides */
+.text-sm  { font-size: 1.3rem; }
+.text-lg  { font-size: 1.8rem; }
+.text-xl  { font-size: 2.0rem; }
+
+/* Alignment */
+.text-center { text-align: center; }
+.text-right  { text-align: right; }
+
+/* Font family override */
+.font-display { font-family: var(--font-display); }
+.font-mono    { font-family: var(--font-mono); }
+
+
+/* ── SECTION EYEBROW LABEL ───────────────────────────────────────
+   Small uppercase label that appears ABOVE a section heading.
+   Example:
+     <span class="eyebrow">Our Services</span>
+     <h2>What We Build</h2>
+   ──────────────────────────────────────────────────────────────── */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: var(--space-sm);
+}

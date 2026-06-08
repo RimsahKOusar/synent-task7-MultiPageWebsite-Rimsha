@@ -1,0 +1,85 @@
+/*
+╔═══════════════════════════════════════════════════════════════╗
+║  css/base/variables.css  –  DESIGN TOKENS                    ║
+║                                                               ║
+║  What this file does:                                         ║
+║  Defines every reusable value in the design system.          ║
+║  Every other CSS file reads these via var(--name).           ║
+║                                                               ║
+║  Think of it as the "source of truth":                        ║
+║  Change --accent here → every button, link, highlight        ║
+║  updates automatically. No hunting through 10 files.         ║
+║                                                               ║
+║  Loaded by: every HTML page (first CSS in <head>)            ║
+╚═══════════════════════════════════════════════════════════════╝
+*/
+
+
+/* ══════════════════════════════════════════════════════════════
+   :root  –  targets the <html> element (highest point)
+   Variables here are readable by EVERY element on EVERY page.
+   ══════════════════════════════════════════════════════════════ */
+:root {
+
+  /* ── COLOUR PALETTE ──────────────────────────────────────────
+     Warm editorial palette — cream backgrounds, deep ink,
+     and a rich amber accent that feels premium but approachable.
+     ────────────────────────────────────────────────────────── */
+  --bg-page:      #f7f3ec;   /* warm cream — main page background   */
+  --bg-panel:     #ffffff;   /* pure white — cards & section fills  */
+  --bg-panel-alt: #fdf9f3;   /* barely warm — alternate card bg     */
+  --border:       #e4ddd0;   /* soft divider lines                  */
+  --border-focus: #c8a96e;   /* amber glow on focused inputs        */
+
+  --accent:       #b8862a;   /* rich amber — primary accent         */
+  --accent-hover: #9a6e1e;   /* darker amber on hover               */
+  --accent-light: #fdf3e0;   /* pale amber — hover backgrounds      */
+
+  --text-heading: #1c160c;   /* near-black ink — headings           */
+  --text-body:    #3a3020;   /* dark warm brown — body copy         */
+  --text-muted:   #8a7d6a;   /* grey-brown — captions, labels       */
+  --text-hint:    #b8aa97;   /* lightest — placeholder / hint text  */
+
+  /* ── TYPOGRAPHY ──────────────────────────────────────────────
+     Two fonts loaded via Google Fonts in each HTML <head>.
+     Display font (serif) for headings; DM Sans for everything else.
+     ────────────────────────────────────────────────────────── */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* ── SPACING SCALE ───────────────────────────────────────────
+     Every gap, padding, and margin should be one of these
+     values so spacing feels rhythmic and consistent.
+     Based on a 4 px grid.
+     ────────────────────────────────────────────────────────── */
+  --space-xs:   4px;
+  --space-sm:   8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  40px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+
+  /* ── BORDER RADIUS ────────────────────────────────────────── */
+  --radius-sm:   6px;
+  --radius-md:  12px;
+  --radius-lg:  20px;
+  --radius-full: 9999px;   /* pill / circle */
+
+  /* ── SHADOWS ─────────────────────────────────────────────── */
+  --shadow-card:  0 2px 16px rgba(60,40,10,0.07);
+  --shadow-hover: 0 8px 32px rgba(60,40,10,0.12);
+  --shadow-nav:   0 1px 24px rgba(60,40,10,0.10);
+
+  /* ── TRANSITIONS ─────────────────────────────────────────── */
+  --ease-out:       cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast:  150ms;
+  --duration-mid:   250ms;
+  --duration-slow:  400ms;
+
+  /* ── LAYOUT ──────────────────────────────────────────────── */
+  --container-wide: 1140px;
+  --container-mid:   860px;
+  --nav-height:       72px;
+}

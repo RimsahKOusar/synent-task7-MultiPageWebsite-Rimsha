@@ -1,0 +1,125 @@
+/*
+╔═══════════════════════════════════════════════════════════════╗
+║  css/base/reset.css  –  BROWSER NORMALISATION                ║
+║                                                               ║
+║  What this file does:                                         ║
+║  Every browser ships with its OWN built-in styles —          ║
+║  different margins on headings, blue underlines on links,     ║
+║  weird padding on buttons, etc.                               ║
+║                                                               ║
+║  This file strips all of that out so we start from a         ║
+║  predictable blank slate on Chrome, Firefox, and Safari.     ║
+║                                                               ║
+║  Rule: if a style isn't here, it was deliberately added      ║
+║  somewhere else rather than inherited from the browser.       ║
+║                                                               ║
+║  Load order: must be the SECOND CSS file (after variables).  ║
+╚═══════════════════════════════════════════════════════════════╝
+*/
+
+
+/* ── BOX-MODEL RESET ─────────────────────────────────────────────
+   Default browser behaviour: padding + border are added OUTSIDE
+   declared width.  width:200px + padding:20px → actual: 240px.
+   border-box fixes this: width:200px + padding:20px → still 200px.
+   ──────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ── ROOT ────────────────────────────────────────────────────────
+   font-size: 62.5%  makes 1rem = 10px, so 1.6rem = 16px.
+   Mental maths becomes easy: 2.4rem = 24px, 4rem = 40px.
+   scroll-behavior: smooth  animates anchor-link jumps.
+   ──────────────────────────────────────────────────────────────── */
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+
+/* ── BODY BASE ────────────────────────────────────────────────────
+   Sets the warm cream canvas and default text styles every
+   page inherits unless overridden by a more specific rule.
+   ──────────────────────────────────────────────────────────────── */
+body {
+  background-color: var(--bg-page);
+  color: var(--text-body);
+  font-family: var(--font-body);
+  font-size: 1.6rem;   /* = 16px after 62.5% root trick */
+  line-height: 1.7;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/* ── LISTS ────────────────────────────────────────────────────────
+   Browsers add left padding and bullet/number markers to lists.
+   We strip them and add list-specific styles per component.
+   ──────────────────────────────────────────────────────────────── */
+ul, ol { list-style: none; }
+
+
+/* ── LINKS ────────────────────────────────────────────────────────
+   Remove blue colour and underline. Specific link styles are
+   added in component CSS files where they're actually needed.
+   ──────────────────────────────────────────────────────────────── */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* ── IMAGES ───────────────────────────────────────────────────────
+   max-width: 100% prevents images overflowing their container.
+   display: block removes the small gap below inline images.
+   ──────────────────────────────────────────────────────────────── */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+
+/* ── BUTTONS ──────────────────────────────────────────────────────
+   Strip browser defaults. Real button styles are per-component.
+   ──────────────────────────────────────────────────────────────── */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+
+/* ── FORM ELEMENTS ────────────────────────────────────────────────
+   Form elements don't inherit font by default in all browsers.
+   ──────────────────────────────────────────────────────────────── */
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+
+/* ── HEADINGS ─────────────────────────────────────────────────────
+   Strip browser bold/sizes. Real heading styles are in typography.
+   ──────────────────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+
+/* ── UTILITY ──────────────────────────────────────────────────────
+   .hidden is toggled by JavaScript to show/hide elements.
+   !important overrides any other display value.
+   ──────────────────────────────────────────────────────────────── */
+.hidden { display: none !important; }

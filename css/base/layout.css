@@ -1,0 +1,125 @@
+/*
+╔═══════════════════════════════════════════════════════════════╗
+║  css/base/layout.css  –  LAYOUT UTILITIES                    ║
+║                                                               ║
+║  What this file does:                                         ║
+║  Provides the reusable layout building blocks used across    ║
+║  every page: container wrappers, section spacers, grid       ║
+║  helpers, flexbox utilities, and responsive breakpoints.     ║
+║                                                               ║
+║  Philosophy: small single-purpose classes you COMBINE        ║
+║  in HTML rather than writing custom CSS for every element.   ╚═══════════════════════════════════════════════════════════════╝
+*/
+
+
+/* ── CONTAINER ────────────────────────────────────────────────────
+   Centers content and constrains it to a readable max-width.
+   padding-inline prevents content from touching the screen edge
+   on narrow screens.
+
+   --container-wide: 1140px  (full-width sections)
+   --container-mid:   860px  (narrow / text-heavy sections)
+   ──────────────────────────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--container-wide);
+  margin-inline: auto;      /* shorthand: margin-left + margin-right: auto */
+  padding-inline: var(--space-lg);
+}
+
+.container-mid {
+  max-width: var(--container-mid);
+  margin-inline: auto;
+  padding-inline: var(--space-lg);
+}
+
+
+/* ── SECTION WRAPPER ──────────────────────────────────────────────
+   Adds consistent vertical breathing room to every <section>.
+   .section-sm is for sections that need less vertical space.
+   ──────────────────────────────────────────────────────────────── */
+.section {
+  padding-block: var(--space-3xl);  /* padding-top + padding-bottom */
+}
+
+.section-sm {
+  padding-block: var(--space-2xl);
+}
+
+
+/* ── SECTION HEADER ───────────────────────────────────────────────
+   Standard header block at the top of most sections.
+   Contains the eyebrow label + heading + optional description.
+   ──────────────────────────────────────────────────────────────── */
+.section-header {
+  margin-bottom: var(--space-2xl);
+}
+
+.section-header.centered {
+  text-align: center;
+}
+
+.section-header.centered p {
+  margin-inline: auto;
+}
+
+.section-header p {
+  font-size: 1.7rem;
+  color: var(--text-muted);
+  margin-top: var(--space-md);
+}
+
+
+/* ── GRID HELPERS ─────────────────────────────────────────────────
+   CSS Grid columns. Use with .grid on the parent.
+
+   How CSS Grid works:
+     display: grid                         → activates grid
+     grid-template-columns: repeat(3,1fr)  → 3 equal columns
+     1fr = "1 fraction of available space"
+
+   Usage in HTML:
+     <div class="grid grid-3">...</div>
+   ──────────────────────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+
+/* ── FLEX HELPERS ─────────────────────────────────────────────────
+   Common flex patterns as utility classes.
+   ──────────────────────────────────────────────────────────────── */
+.flex         { display: flex; }
+.flex-center  { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.flex-col     { display: flex; flex-direction: column; }
+.flex-wrap    { flex-wrap: wrap; }
+.gap-sm       { gap: var(--space-sm); }
+.gap-md       { gap: var(--space-md); }
+.gap-lg       { gap: var(--space-lg); }
+
+
+/* ── RESPONSIVE: MOBILE ───────────────────────────────────────────
+   @media (max-width: Npx) means "apply ONLY when screen ≤ N px".
+   Multi-column grids collapse to single column on mobile.
+   ──────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;   /* single column on phones */
+  }
+
+  .container,
+  .container-mid {
+    padding-inline: var(--space-md);
+  }
+
+  .section    { padding-block: var(--space-2xl); }
+  .section-sm { padding-block: var(--space-xl);  }
+}
