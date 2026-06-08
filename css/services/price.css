@@ -1,0 +1,105 @@
+/* ══════════════════════════════════════════════════════════════
+   PRICING CARDS
+   ══════════════════════════════════════════════════════════════ */
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+.pricing-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--duration-mid), box-shadow var(--duration-mid);
+}
+
+/* The featured/recommended tier — elevated and amber-bordered */
+.pricing-card.featured {
+  border-color: var(--accent);
+  transform: scale(1.03);
+  box-shadow: 0 8px 40px rgba(184,134,42,0.18);
+}
+
+.pricing-card h3 {
+  font-family: var(--font-body);
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--text-heading);
+}
+
+/* Price display: currency symbol + big number + /mo */
+.price-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  line-height: 1;
+}
+
+.price-symbol {
+  font-size: 1.8rem;
+  color: var(--text-muted);
+  padding-bottom: 5px;
+}
+
+.price-amount {
+  font-family: var(--font-display);
+  font-size: 4.4rem;
+  font-weight: 700;
+  color: var(--text-heading);
+}
+
+.price-period {
+  font-size: 1.35rem;
+  color: var(--text-muted);
+  padding-bottom: 6px;
+}
+
+.pricing-desc {
+  font-size: 1.35rem;
+  color: var(--text-muted);
+  max-width: none;
+}
+
+.pricing-features {
+  border-block: 1px solid var(--border);
+  padding-block: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  flex-grow: 1;
+}
+
+.pricing-features li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: 1.35rem;
+  color: var(--text-muted);
+}
+
+.pricing-features li::before {
+  content: '✓';
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.pricing-features li.unavailable {
+  opacity: 0.4;
+  text-decoration: line-through;
+}
+
+.pricing-features li.unavailable::before {
+  content: '–';
+  color: var(--text-hint);
+}
+

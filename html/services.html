@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="../css/shared/components.css" />
   <link rel="stylesheet" href="../css/services/service.css" />  <!-- Services-specific only -->
   <link rel="stylesheet" href="../css/services/process.css" />  <!-- Process timeline styles -->
+<link rel="stylesheet" href="../css/services/price.css" />  <!-- Pricing grid styles -->
 </head>
 
 <body>
@@ -216,6 +217,83 @@
           <div class="step-circle">04</div>
           <h3>Launch</h3>
           <p>Thorough testing, then a smooth handover or live deployment.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!--
+  ╔═════════════════════════════════════════════════════════════╗
+  ║  MODULE 5 — PRICING                                        ║
+  ║  Three tier cards. The middle card is .featured.           ║
+  ║  CSS: css/services/services.css → .pricing-*               ║
+  ╚═════════════════════════════════════════════════════════════╝
+  -->
+  <section class="section" aria-labelledby="pricingHeading">
+    <div class="container">
+
+      <div class="section-header centered reveal">
+        <span class="eyebrow">Pricing</span>
+        <h2 id="pricingHeading">Transparent from day one</h2>
+        <p>No surprise invoices. Pick a tier, know what you're getting.</p>
+      </div>
+
+      <div class="pricing-grid">
+
+        <div class="pricing-card reveal">
+          <h3>Starter</h3>
+          <div class="price-row">
+            <span class="price-symbol">$</span>
+            <span class="price-amount">2,400</span>
+            <span class="price-period">/project</span>
+          </div>
+          <p class="pricing-desc">Perfect for solo founders and small businesses getting online.</p>
+          <ul class="pricing-features">
+            <li>Up to 5 pages</li>
+            <li>Mobile responsive</li>
+            <li>Basic SEO setup</li>
+            <li class="unavailable">Custom animations</li>
+            <li class="unavailable">Monthly support</li>
+          </ul>
+          <a class="btn btn-outline" href="contact.html">Get started</a>
+        </div>
+
+        <div class="pricing-card featured reveal">
+          <span class="badge" style="margin-bottom:var(--space-md);">Most popular</span>
+          <h3>Studio</h3>
+          <div class="price-row">
+            <span class="price-symbol">$</span>
+            <span class="price-amount">6,800</span>
+            <span class="price-period">/project</span>
+          </div>
+          <p class="pricing-desc">Our most popular tier for growing companies ready to invest in quality.</p>
+          <ul class="pricing-features">
+            <li>Up to 12 pages</li>
+            <li>Mobile responsive</li>
+            <li>Full SEO package</li>
+            <li>Custom animations</li>
+            <li class="unavailable">Monthly support</li>
+          </ul>
+          <a class="btn btn-primary" href="contact.html">Get started</a>
+        </div>
+
+        <div class="pricing-card reveal">
+          <h3>Enterprise</h3>
+          <div class="price-row">
+            <span class="price-symbol">$</span>
+            <span class="price-amount">14k+</span>
+            <span class="price-period">/project</span>
+          </div>
+          <p class="pricing-desc">End-to-end partnership for ambitious brands with complex needs.</p>
+          <ul class="pricing-features">
+            <li>Unlimited pages</li>
+            <li>Mobile responsive</li>
+            <li>Full SEO package</li>
+            <li>Custom animations</li>
+            <li>Monthly support</li>
+          </ul>
+          <a class="btn btn-outline" href="contact.html">Let's talk</a>
         </div>
 
       </div>
