@@ -57,3 +57,75 @@
 
 .page-overlay.fade-in  { opacity: 1; pointer-events: all; }
 .page-overlay.fade-out { opacity: 0; }
+
+
+/* ══════════════════════════════════════════════════════════════
+   BUTTONS
+   ══════════════════════════════════════════════════════════════
+
+   Usage:
+     <a class="btn btn-primary" href="#">Explore</a>
+     <button class="btn btn-outline">Learn More</button>
+*/
+
+/* Base: shared structure every button variant builds on */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-body);
+  font-size: 1.45rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  padding: var(--space-sm) var(--space-lg);
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background   var(--duration-mid),
+    color        var(--duration-mid),
+    border-color var(--duration-mid),
+    transform    var(--duration-fast),
+    box-shadow   var(--duration-mid);
+}
+
+/* Slight lift on hover; press-down on click */
+.btn:hover  { transform: translateY(-2px); }
+.btn:active { transform: translateY(0);    }
+
+
+/* ── PRIMARY ──────────────────────────────────────────────────────
+   Filled amber. The main call-to-action.
+   ──────────────────────────────────────────────────────────────── */
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  box-shadow: 0 6px 24px rgba(184,134,42,0.28);
+}
+
+
+/* ── OUTLINE ──────────────────────────────────────────────────────
+   Transparent with a border. Secondary action.
+   ──────────────────────────────────────────────────────────────── */
+.btn-outline {
+  background: transparent;
+  color: var(--text-heading);
+  border: 1.5px solid var(--border);
+}
+
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+
+/* ── LARGE ────────────────────────────────────────────────────────
+   Add .btn-lg to any variant for a larger size (hero CTAs).
+   ──────────────────────────────────────────────────────────────── */
+.btn-lg {
+  font-size: 1.6rem;
+  padding: var(--space-md) var(--space-xl);
+}
