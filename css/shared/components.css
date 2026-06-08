@@ -1,0 +1,59 @@
+/*
+╔═══════════════════════════════════════════════════════════════╗
+║  css/shared/components.css  –  REUSABLE UI COMPONENTS        ║
+║                                                               ║
+║  What this file does:                                         ║
+║  Styles UI components used on MORE THAN ONE page:            ║
+║    • Buttons (.btn, .btn-primary, .btn-outline)               ║
+║    • Badge / tag chip (.badge)                                ║
+║    • Base card (.card)                                        ║
+║    • Page hero banner (.page-hero) for inner pages           ║
+║    • Page transition overlay (.page-overlay)                  ║
+║                                                               ║
+║  If a component appears on ONE page only, its styles          ║
+║  live in that page's CSS file instead of here.               ║
+╚═══════════════════════════════════════════════════════════════╝
+*/
+
+
+/* ══════════════════════════════════════════════════════════════
+   PAGE HERO  –  compact banner for inner pages (About, etc.)
+   Distinct from the full-screen home hero.
+   ══════════════════════════════════════════════════════════════ */
+.page-hero {
+  padding-top: calc(var(--nav-height) + var(--space-2xl));
+  padding-bottom: var(--space-2xl);
+  text-align: center;
+  background: var(--bg-panel-alt);
+  border-bottom: 1px solid var(--border);
+}
+
+.page-hero h1 {
+  margin-bottom: var(--space-md);
+}
+
+.page-hero p {
+  font-size: 1.8rem;
+  color: var(--text-muted);
+  margin-inline: auto;
+  max-width: 55ch;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   PAGE TRANSITION OVERLAY
+   A full-screen div used by js/shared/transitions.js.
+   Fades IN when leaving a page, fades OUT when arriving.
+   ══════════════════════════════════════════════════════════════ */
+.page-overlay {
+  position: fixed;
+  inset: 0;          /* top:0 right:0 bottom:0 left:0 */
+  background: var(--bg-page);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-slow) var(--ease-out);
+}
+
+.page-overlay.fade-in  { opacity: 1; pointer-events: all; }
+.page-overlay.fade-out { opacity: 0; }
