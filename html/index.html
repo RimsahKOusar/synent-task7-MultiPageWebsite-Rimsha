@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luminary – Digital Studio</title>
+  <meta name="description" content="Luminary is a boutique digital studio crafting websites, brands, and digital products." />
+
+  <!-- ── FONTS ──────────────────────────────────────────────────────
+       Cormorant Garamond: elegant serif for all headings.
+       DM Sans: clean, modern sans-serif for body text.
+       JetBrains Mono: monospace for labels and eyebrows.
+       display=swap: shows fallback font instantly; loads custom font
+       in the background (prevents invisible text flash).
+  ──────────────────────────────────────────────────────────────── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,700;1,700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- ── STYLESHEETS ────────────────────────────────────────────────
+       Load order matters:
+       1. Base files (variables → reset → typography → layout)
+          These MUST come first — every other file uses var(--...).
+       2. Shared files (nav, footer, components)
+          Used on every page.
+       3. Page-specific files (home hero + highlights)
+          Only loaded on this page.
+  ──────────────────────────────────────────────────────────────── -->
+  <!-- Base layer -->
+  <link rel="stylesheet" href="../css/base/variables.css" />
+  <link rel="stylesheet" href="../css/base/reset.css" />
+  <link rel="stylesheet" href="../css/base/typography.css" />
+  <link rel="stylesheet" href="../css/base/layout.css" />
+
+  <!-- Shared (every page) -->
+  <link rel="stylesheet" href="../css/shared/nav.css" />
+  <link rel="stylesheet" href="../css/shared/footer.css" />
+  <link rel="stylesheet" href="../css/shared/components.css" />
+
+  <!-- Home-specific -->
+  <link rel="stylesheet" href="../css/home/hero.css" />
+  <link rel="stylesheet" href="../css/home/highlights.css" />
+</head>
+
+<body>
+
+  <!--
+  ┌─────────────────────────────────────────────────────────┐
+  │  PAGE TRANSITION OVERLAY                                │
+  │  Full-screen div used by js/shared/transitions.js       │
+  │  Fades in when leaving, fades out when arriving.        │
+  └─────────────────────────────────────────────────────────┘
+  -->
+  <div class="page-overlay"></div>
+
+
+  <!--
+  ╔═════════════════════════════════════════════════════════════╗
+  ║  MODULE 1 — NAVIGATION                                     ║
+  ║  Identical markup on every page.                           ║
+  ║  CSS: css/shared/nav.css                                   ║
+  ║  JS:  js/shared/nav.js  (scroll effect + mobile toggle)    ║
+  ╚═════════════════════════════════════════════════════════════╝
+  -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+
+      <!-- Logo -->
+      <a class="nav-logo" href="index.html" aria-label="Luminary home">
+        <span class="nav-logo-dot" aria-hidden="true"></span>
+        Luminary
+      </a>
+
+      <!-- Desktop links -->
+      <ul class="nav-links" role="list">
+        <li><a class="nav-link" href="../index.html">Home</a></li>
+        <li><a class="nav-link" href="pages/about.html">About</a></li>
+        <li><a class="nav-link" href="pages/services.html">Services</a></li>
+        <li><a class="nav-link" href="pages/contact.html">Contact</a></li>
+      </ul>
+
+      <!-- Desktop CTA -->
+      <a class="nav-cta" href="pages/contact.html">Get In Touch</a>
+
+      <!-- Mobile hamburger button
+           aria-expanded: tells screen readers if menu is open/closed
+           aria-controls: points to the ID of the menu it controls   -->
+      <button
+        class="nav-toggle"
+        aria-label="Toggle mobile menu"
+        aria-expanded="false"
+        aria-controls="mobilePanel"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- Mobile dropdown panel (hidden until hamburger is clicked) -->
+    <div class="nav-mobile-panel" id="mobilePanel" role="menu">
+      <a class="nav-mobile-link" href="index.html"          role="menuitem">Home</a>
+      <a class="nav-mobile-link" href="pages/about.html"    role="menuitem">About</a>
+      <a class="nav-mobile-link" href="pages/services.html" role="menuitem">Services</a>
+      <a class="nav-mobile-link" href="pages/contact.html"  role="menuitem">Contact</a>
+    </div>
+  </nav>
+
+   <!--
+  ╔═════════════════════════════════════════════════════════════╗
+  ║  MODULE 2 — HERO SECTION                                   ║
+  ║  Full-viewport opening section.                            ║
+  ║  CSS: css/home/hero.css                                    ║
+  ║  JS:  js/home/counters.js  (animates [data-count] numbers) ║
+  ╚═════════════════════════════════════════════════════════════╝
+  -->
+  <section class="hero" aria-labelledby="heroHeading">
+    <div class="container">
+      <div class="hero-inner">
+
+        <!-- LEFT: Text content -->
+        <div class="hero-text">
+          <span class="eyebrow">Digital Studio</span>
+
+          <h1 class="hero-title" id="heroHeading">
+            We craft<br />
+            <em>digital work</em><br />
+            worth keeping
+          </h1>
+
+          <p class="hero-desc">
+            Luminary is a boutique studio. We design websites,
+            build products, and shape brands that people remember.
+          </p>
+
+          <!-- CTA button row -->
+          <div class="hero-actions">
+            <a class="btn btn-primary btn-lg" href="pages/services.html">
+              Our Services
+            </a>
+            <a class="btn btn-outline btn-lg" href="pages/contact.html">
+              Start a Project
+            </a>
+          </div>
+
+          <!--
+            Animated stat numbers.
+            data-count  = the target number to count to.
+            data-suffix = text appended after the number.
+            js/home/counters.js reads these to animate.
+          -->
+          <div class="hero-stats">
+            <div>
+              <div class="hero-stat-num"
+                   data-count="120" data-suffix="+"
+                   aria-label="120 plus projects">120+</div>
+              <div class="hero-stat-label">Projects</div>
+            </div>
+            <div>
+              <div class="hero-stat-num"
+                   data-count="8" data-suffix="yr"
+                   aria-label="8 years in business">8yr</div>
+              <div class="hero-stat-label">In Business</div>
+            </div>
+            <div>
+              <div class="hero-stat-num"
+                   data-count="98" data-suffix="%"
+                   aria-label="98 percent satisfaction">98%</div>
+              <div class="hero-stat-label">Satisfaction</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Floating card visual (decorative, aria-hidden) -->
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-float">
+            <div class="hero-card-grid">
+              <div class="mini-card">
+                <div class="mini-card-icon">🎨</div>
+                <h4>Brand Design</h4>
+                <p>Identities that stand out.</p>
+              </div>
+              <div class="mini-card">
+                <div class="mini-card-icon">⚡</div>
+                <h4>Web Dev</h4>
+                <p>Fast, accessible sites.</p>
+              </div>
+              <div class="mini-card wide">
+                <div class="mini-card-icon">📈</div>
+                <h4>Growth Strategy</h4>
+                <p>Data-driven plans that turn visitors into customers.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script src="../js/nav.js"></script>
+  <script src="../js/transitions.js"></script>
+ 
+</body>
+</html>

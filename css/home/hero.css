@@ -1,0 +1,248 @@
+/*
+╔═══════════════════════════════════════════════════════════════╗
+║  css/home/hero.css  –  HOME PAGE: HERO SECTION               ║
+║                                                               ║
+║  What this file does:                                         ║
+║  Styles the full-viewport opening section of the home page:  ║
+║    • Background texture + decorative blobs                    ║
+║    • Two-column layout (text left, visual right)              ║
+║    • Headline, sub-copy, and CTA button row                   ║
+║    • Animated stat numbers                                    ║
+║    • Floating card visual on the right                        ║
+║                                                               ║
+║  Corresponding HTML: index.html → <section class="hero">     ║
+║  Corresponding JS:   js/home/counters.js (stat animation)    ║
+╚═══════════════════════════════════════════════════════════════╝
+*/
+
+
+/* ══════════════════════════════════════════════════════════════
+   HERO SECTION WRAPPER
+   min-height: 100vh = at least full screen height.
+   overflow: hidden clips the decorative background blobs.
+   padding-top offsets the fixed navbar (--nav-height = 72px).
+   ══════════════════════════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: var(--nav-height);
+  padding-bottom: var(--space-2xl);
+
+  /* Faint horizontal rule texture — editorial notebook feel */
+  background-image: repeating-linear-gradient(
+    transparent, transparent 47px, #ede7d8 47px, #ede7d8 48px
+  );
+}
+
+
+/* ── BACKGROUND BLOBS ─────────────────────────────────────────────
+   Two large blurred circles (::before + ::after) that create
+   a soft ambient glow behind the hero content.
+
+   position: absolute takes them OUT of the document flow.
+   filter: blur() softens the hard circle edge into a halo.
+   pointer-events: none means they can't intercept clicks.
+   ──────────────────────────────────────────────────────────────── */
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(100px);
+  z-index: 0;
+}
+
+/* Top-right amber blob */
+.hero::before {
+  width: 560px; height: 560px;
+  top: -80px; right: -100px;
+  background: radial-gradient(circle, rgba(184,134,42,0.14) 0%, transparent 70%);
+}
+
+/* Bottom-left warm blob */
+.hero::after {
+  width: 480px; height: 480px;
+  bottom: 0; left: -120px;
+  background: radial-gradient(circle, rgba(184,134,42,0.08) 0%, transparent 70%);
+}
+
+
+/* ── HERO INNER GRID ──────────────────────────────────────────────
+   Two columns: text (1fr) left, visual (1fr) right.
+   position: relative + z-index: 1 places it ABOVE the blobs.
+   ──────────────────────────────────────────────────────────────── */
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--space-2xl);
+  position: relative;
+  z-index: 1;
+}
+
+
+/* ── HERO TEXT ────────────────────────────────────────────────────
+   The left column: eyebrow → headline → description → buttons → stats.
+   ──────────────────────────────────────────────────────────────── */
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.hero-title {
+  font-size: clamp(3.8rem, 6.5vw, 6.4rem);
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--text-heading);
+}
+
+/* The italic accent line inside the heading */
+.hero-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-desc {
+  font-size: 1.8rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 48ch;
+}
+
+
+/* ── HERO BUTTON ROW ──────────────────────────────────────────────  */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+
+/* ── HERO STATS ───────────────────────────────────────────────────
+   Three numbers below the buttons.
+   border-top gives a clean dividing line above the stats.
+   ──────────────────────────────────────────────────────────────── */
+.hero-stats {
+  display: flex;
+  gap: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.hero-stat-num {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  line-height: 1;
+}
+
+.hero-stat-label {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+  margin-top: var(--space-xs);
+}
+
+
+/* ── HERO VISUAL ──────────────────────────────────────────────────
+   The right column: a stack of overlapping mini-cards.
+   animation: float makes the whole group gently bob up/down.
+   ──────────────────────────────────────────────────────────────── */
+.hero-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0);     }
+  50%       { transform: translateY(-18px); }
+}
+
+/* Grid of 4 mini preview cards */
+.hero-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  width: 100%;
+  max-width: 420px;
+}
+
+.mini-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--duration-mid);
+}
+
+.mini-card:hover {
+  border-color: var(--border-focus);
+}
+
+.mini-card-icon {
+  font-size: 2rem;
+  margin-bottom: var(--space-sm);
+  line-height: 1;
+}
+
+.mini-card h4 {
+  font-family: var(--font-body);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin-bottom: var(--space-xs);
+}
+
+.mini-card p {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  max-width: none;
+}
+
+/* The wide card spans both columns */
+.mini-card.wide {
+  grid-column: 1 / -1;
+}
+
+/* Staggered slide-up entrance animations */
+.mini-card:nth-child(1) { animation: riseIn 0.5s 0.1s var(--ease-out) both; }
+.mini-card:nth-child(2) { animation: riseIn 0.5s 0.2s var(--ease-out) both; }
+.mini-card:nth-child(3) { animation: riseIn 0.5s 0.3s var(--ease-out) both; }
+
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+
+/* ── RESPONSIVE ───────────────────────────────────────────────────  */
+@media (max-width: 768px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  /* Visual moves ABOVE the text on mobile */
+  .hero-visual { order: -1; }
+
+  .hero-stats   { justify-content: center; }
+  .hero-actions { justify-content: center; }
+  .hero-desc    { margin-inline: auto; }
+}
