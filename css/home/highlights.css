@@ -1,0 +1,112 @@
+/*
+╔═══════════════════════════════════════════════════════════════╗
+║  css/home/highlights.css  –  HOME PAGE: HIGHLIGHTS SECTION   ║
+║                                                               ║
+║  What this file does:                                         ║
+║  Styles the "why choose us" three-card section beneath        ║
+║  the hero. Each card has an icon box, heading, and copy.     ║
+║                                                               ║
+║  Corresponding HTML: index.html → <section class="highlights">║
+╚═══════════════════════════════════════════════════════════════╝
+*/
+
+
+/* ── SECTION BACKGROUND ───────────────────────────────────────────
+   Slightly raised surface to visually separate from the hero.
+   border-block applies top AND bottom borders in one line.
+   ──────────────────────────────────────────────────────────────── */
+.highlights {
+  background: var(--bg-panel-alt);
+  border-block: 1px solid var(--border);
+}
+
+
+/* ── THREE-CARD GRID ──────────────────────────────────────────────
+   Collapses to single column on mobile via layout.css .grid-3.
+   ──────────────────────────────────────────────────────────────── */
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+
+/* ── HIGHLIGHT CARD ───────────────────────────────────────────────
+   The ::before pseudo-element creates a left accent bar.
+   transform: scaleY(0) collapses it to 0 height by default.
+   On hover it expands to full height — smooth and elegant.
+   ──────────────────────────────────────────────────────────────── */
+.highlight-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition:
+    box-shadow   var(--duration-mid),
+    border-color var(--duration-mid),
+    transform    var(--duration-mid) var(--ease-out);
+}
+
+/* Left accent bar — starts collapsed */
+.highlight-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform var(--duration-mid) var(--ease-out);
+}
+
+.highlight-card:hover {
+  box-shadow: var(--shadow-hover);
+  border-color: var(--border-focus);
+  transform: translateY(-4px);
+}
+
+.highlight-card:hover::before {
+  transform: scaleY(1);  /* bar expands on hover */
+}
+
+
+/* ── ICON BOX ─────────────────────────────────────────────────────
+   Rounded amber-tinted square holding the emoji icon.
+   ──────────────────────────────────────────────────────────────── */
+.highlight-icon {
+  width: 52px; height: 52px;
+  border-radius: var(--radius-md);
+  background: var(--accent-light);
+  border: 1px solid rgba(184,134,42,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin-bottom: var(--space-lg);
+}
+
+
+/* ── CARD TEXT ────────────────────────────────────────────────────  */
+.highlight-card h3 {
+  font-family: var(--font-body);
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin-bottom: var(--space-sm);
+}
+
+.highlight-card p {
+  font-size: 1.45rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: none;
+}
+
+
+/* ── RESPONSIVE ───────────────────────────────────────────────────  */
+@media (max-width: 768px) {
+  .highlights-grid { grid-template-columns: 1fr; }
+}
