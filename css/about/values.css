@@ -1,0 +1,53 @@
+/* ══════════════════════════════════════════════════════════════
+   VALUES SECTION  –  2×2 icon + text grid
+   ══════════════════════════════════════════════════════════════ */
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+}
+
+.value-item {
+  display: flex;
+  gap: var(--space-lg);
+  align-items: flex-start;
+  padding: var(--space-xl);
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--duration-mid), box-shadow var(--duration-mid);
+}
+
+.value-item:hover {
+  border-color: var(--border-focus);
+  box-shadow: var(--shadow-hover);
+}
+
+.value-icon {
+  font-size: 2rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.value-item h3 {
+  font-family: var(--font-body);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin-bottom: var(--space-xs);
+}
+
+.value-item p {
+  font-size: 1.4rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  max-width: none;
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────────────  */
+@media (max-width: 768px) {
+  .values-grid { grid-template-columns: 1fr; }
+}

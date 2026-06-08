@@ -22,7 +22,8 @@
   <link rel="stylesheet" href="../css/base/layout.css" />
   <link rel="stylesheet" href="../css/shared/nav.css" />
   <link rel="stylesheet" href="../css/shared/components.css" />
-    <link rel="stylesheet" href="../css/about/Story.css" />
+  <link rel="stylesheet" href="../css/about/Story.css" />
+  <link rel="stylesheet" href="../css/about/values.css" />
  
 </head>
 
@@ -86,7 +87,7 @@
   ╔═════════════════════════════════════════════════════════════╗
   ║  MODULE 3 — STORY SECTION                                  ║
   ║  Text on the left, overlapping process cards on the right. ║
-  ║  CSS: css/about/about.css → .story-*                       ║
+  ║  CSS: css/about/Story.css → .story-*                       ║
   ╚═════════════════════════════════════════════════════════════╝
   -->
   <section class="section" aria-labelledby="storyHeading">
@@ -131,7 +132,62 @@
     </div>
   </section>
 
-  
+   <!--
+  ╔═════════════════════════════════════════════════════════════╗
+  ║  MODULE 4 — VALUES                                         ║
+  ║  Four core values in a 2×2 grid.                           ║
+  ║  CSS: css/about/about.css → .values-*                      ║
+  ╚═════════════════════════════════════════════════════════════╝
+  -->
+  <section
+    class="section"
+    style="background:var(--bg-panel-alt); border-block:1px solid var(--border);"
+    aria-labelledby="valuesHeading"
+  >
+    <div class="container">
+
+      <div class="section-header centered reveal">
+        <span class="eyebrow">What we stand for</span>
+        <h2 id="valuesHeading">Our values</h2>
+      </div>
+
+      <div class="values-grid">
+
+        <div class="value-item reveal">
+          <div class="value-icon" aria-hidden="true">🎯</div>
+          <div>
+            <h3>Purposeful</h3>
+            <p>Every decision has a reason. We don't add complexity for its own sake.</p>
+          </div>
+        </div>
+
+        <div class="value-item reveal">
+          <div class="value-icon" aria-hidden="true">🤝</div>
+          <div>
+            <h3>Collaborative</h3>
+            <p>Your insights + our expertise = outcomes better than either alone.</p>
+          </div>
+        </div>
+
+        <div class="value-item reveal">
+          <div class="value-icon" aria-hidden="true">🔍</div>
+          <div>
+            <h3>Transparent</h3>
+            <p>No hidden costs, no jargon, no surprises. You always know what's happening.</p>
+          </div>
+        </div>
+
+        <div class="value-item reveal">
+          <div class="value-icon" aria-hidden="true">📐</div>
+          <div>
+            <h3>Crafted</h3>
+            <p>We sweat the details — they're what separate good from great.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
 
 
